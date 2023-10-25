@@ -101,63 +101,32 @@ export default function TodoListView(
   );
 
   return (
-    <div class="flex gap-2 w-full items-center justify-center py-4 xl:py-16 px-2">
-      <div class="rounded w-full xl:max-w-xl">
-        <div class="flex flex-col gap-4 pb-4">
-          <div class="flex flex-row gap-2 items-center">
-            <h1 class="font-bold text-xl">Outstanding Task List</h1>
-            <div
-              class={`inline-block h-2 w-2 ${
-                busy ? "bg-yellow-600" : "bg-green-600"
-              }`}
-              style={{ borderRadius: "50%" }}
-            >
-            </div>
-          </div>
-          <div class="flex">
-            <p class="opacity-90 text-sm">
-              Share this page to collaborate with others.
-            </p>
-          </div>
-          <div class="flex">
-            <input
-              class="border rounded w-full py-2 px-3 mr-4"
-              placeholder="Add a todo item"
-              ref={addTodoInput}
-            />
-            <button
-              class="p-2 bg-blue-600 text-white rounded disabled:opacity-50"
-              onClick={addTodo}
-              disabled={adding}
-            >
-              Add
-            </button>
-          </div>
-        </div>
-        <div>
-          {data.items.map((item) => (
-            <TodoItem
-              key={item.id! + ":" + item.versionstamp!}
-              item={item}
-              save={saveTodo}
-            />
-          ))}
-        </div>
-        <div class="pt-6 opacity-50 text-sm">
-          <p>
-            Initial data fetched in {props.latency}ms
-          </p>
-          <p>
-            <a
-              href="https://github.com/denoland/showcase_todo"
-              class="underline"
-            >
-              Source code
-            </a>
-          </p>
-        </div>
+   <div class="flex flex-col w-full h-full items-center justify-center p-4 bg-gray-100">
+    <div class="rounded-lg shadow-lg w-full max-w-md bg-white p-4">
+      <h1 class="text-center font-bold text-2xl mb-4">Task List</h1>
+      <div class="mb-4 flex items-center justify-between">
+        <p class="text-sm opacity-80">Share to collaborate</p>
+        <div class={`h-3 w-3 rounded-full ${busy ? "bg-yellow-500" : "bg-green-500"}`}></div>
+      </div>
+      <div class="flex items-center mb-4">
+        <input class="flex-grow rounded-lg p-2 shadow-sm border" placeholder="New task..." ref={addTodoInput} />
+        <button class="ml-2 p-2 bg-blue-600 text-white rounded-lg shadow-sm" onClick={addTodo} disabled={adding}>
+          +
+        </button>
+      </div>
+      <div class="divide-y divide-gray-300">
+        {data.items.map((item) => (
+          <TodoItem key={item.id! + ":" + item.versionstamp!} item={item} save={saveTodo} />
+        ))}
+      </div>
+      <div class="mt-6 text-center text-sm opacity-50">
+        <p>Fetched in {props.latency}ms</p>
+        <p>
+          <a href="https://github.com/denoland/showcase_todo" class="underline">Source</a>
+        </p>
       </div>
     </div>
+  </div>
   );
 }
 
