@@ -105,7 +105,7 @@ export default function TodoListView(
       <div class="rounded w-full xl:max-w-xl">
         <div class="flex flex-col gap-4 pb-4">
           <div class="flex flex-row gap-2 items-center">
-            <h1 class="font-bold text-xl">Todo List</h1>
+            <h1 class="font-bold text-xl">Outstanding Task List</h1>
             <div
               class={`inline-block h-2 w-2 ${
                 busy ? "bg-yellow-600" : "bg-green-600"
