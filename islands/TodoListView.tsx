@@ -115,7 +115,7 @@ export default function TodoListView(
             </div>
           </div>
           <div class="flex">
-            <p class="opacity-50 text-sm">
+            <p class="opacity-90 text-sm">
               Share this page to collaborate with others.
             </p>
           </div>
